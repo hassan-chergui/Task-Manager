@@ -50,7 +50,8 @@ class TaskController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'is_completed' => 'sometimes|boolean'
         ]);
 
         $task->update($validated);
