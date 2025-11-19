@@ -6,7 +6,7 @@
 </h3>
 @endsection --}}
 
-@extends('layouts.app')
+@extends('layouts.ap')
 @section('title','Home')
 @section('content')
 

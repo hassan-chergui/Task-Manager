@@ -7,7 +7,7 @@
     <p>Email: <a href="hassan.chergui95@gmail.com">hassan.chergui95@gmail.com</a></p>
 @endsection --}}
 
-@extends('layouts.app')
+@extends('layouts.ap')
 @section('title','Contact')
 @section('content')
 
