@@ -9,7 +9,7 @@ class TaskController extends Controller
 {
     public function home()
     {
-        $tasks = Task::all();
+        // $tasks = Task::all();
         return view('home', compact('tasks'));
     }
     // 1. Show all tasks 
