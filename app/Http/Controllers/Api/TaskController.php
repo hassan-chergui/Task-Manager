@@ -29,7 +29,6 @@ class TaskController extends Controller
         $task = Task::create($validated);
 
         return response()->json($task);
-        // return redirect()->route('tasks.index');
     }
 
     /**
