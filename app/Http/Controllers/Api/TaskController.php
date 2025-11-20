@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\Task;
 use App\Http\Controllers\Controller;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
@@ -12,7 +12,9 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
+        $tasks = Task::all();
+        return response()->json($tasks);
+        // return view('home', compact('tasks'));
     }
 
     /**
