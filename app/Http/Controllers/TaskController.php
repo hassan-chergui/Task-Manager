@@ -9,8 +9,7 @@ class TaskController extends Controller
 {
     public function home()
     {
-        // $tasks = Task::all();
-        return view('home', compact('tasks'));
+        return view('home');
     }
     // 1. Show all tasks 
     public function index()
