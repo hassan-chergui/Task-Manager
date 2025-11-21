@@ -1,50 +1,48 @@
 <?php
 
-namespace App\Http\Controllers;
-
+namespace App\Http\Controllers\Api;
+use App\Http\Controllers\Controller;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function home()
-    {
-        return view('home');
-    }
-    // 1. Show all tasks 
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
         $tasks = Task::all();
-        return view('tasks.index', compact('tasks'));
+        return response()->json($tasks);
     }
 
-    // 2. Show create form
-    public function create()
-    {
-        return view('tasks.create');
-    }
-
-    // 3. Store new task
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
             'title' => 'required',
             'description' => 'nullable'
         ]);
+        
+        $task = Task::create($validated);
 
-        Task::create($validated);
-
-        return redirect()->route('tasks.index');
+        return response()->json($task);
     }
 
-    // 4. Show edit form
-    
-    public function edit(Task $task)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        return view('tasks.edit', compact('task'));
+        $task=Task::find($id);
+        return response()->json($task);
     }
 
-    // 5. Update task
+    /**
+     * Update the specified resource in storage.
+     */
     public function update(Request $request, Task $task)
     {
         $validated = $request->validate([
@@ -54,14 +52,15 @@ class TaskController extends Controller
         ]);
 
         $task->update($validated);
-
-        return redirect()->route('tasks.index');
+        return response()->json($task);
     }
 
-    // 6. Delete task
+    /**
+     * Remove the specified resource from storage.
+     */
     public function destroy(Task $task)
     {
         $task->delete();
-        return redirect()->route('tasks.index');
+        return response()->json($task);
     }
 }
