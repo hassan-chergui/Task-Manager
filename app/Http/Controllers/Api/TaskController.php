@@ -52,6 +52,7 @@ class TaskController extends Controller
         ]);
 
         $task->update($validated);
+
         return response()->json($task);
     }
 
